@@ -920,4 +920,36 @@ JS;
     {
         return $this->wdSession->window($name ? $name : 'current')->postSize(array('width' => $width, 'height' => $height));
     }
+
+    /**
+     * Returns text of opened alert dialog window
+     */
+    public function getDialogText()
+    {
+        return $this->wdSession->getAlert_text();
+    }
+
+    /**
+     * Fills in text into prompt window
+     */
+    public function setPromptText($text)
+    {
+        $this->wdSession->postAlert_text($text);
+    }
+
+    /**
+     * Accepts prompt dialog window
+     */
+    public function acceptDialog()
+    {
+        $this->wdSession->accept_alert();
+    }
+
+    /**
+     * Dismisses alert dialog window
+     */
+    public function dismissDialog()
+    {
+        $this->wdSession->dismiss_alert();
+    }
 }
